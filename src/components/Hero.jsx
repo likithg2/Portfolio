@@ -138,7 +138,7 @@ export default function Hero() {
 
         <p className="muted-text" style={{ fontSize: 'clamp(16px, 2vw, 20px)', maxWidth: '65ch', margin: '0 auto 40px auto' }}>
           <TypewriterText 
-            text={'Computer Science Engineering student building practical software across APIs, mobile applications, machine learning, and databases.'} 
+            text={'Computer Science Engineering student building practical software across APIs, mobile applications, web applications, machine learning, and databases.'} 
             start={step >= 2} 
             speed={25} 
             onComplete={() => setStep(3)} 
