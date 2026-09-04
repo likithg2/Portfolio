@@ -10,7 +10,7 @@ export default function Experience() {
         
         {/* Item 1 */}
         <div style={{ position: 'relative' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
+          <div className="experience-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
             <div>
               <h3 style={{ fontSize: '20px', margin: '0 0 8px 0', fontWeight: 600 }}>Android Application Development Intern</h3>
               <div style={{ fontSize: '15px', color: 'var(--ink)', fontWeight: 500 }}>InnovationHub Technologies Pvt. Ltd. • Bengaluru</div>

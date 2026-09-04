@@ -110,7 +110,7 @@ section {
   border-radius: 24px;
   padding: 32px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-  transition: background 0.4s ease, border 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .glass-card:hover, .glass-card.active-focus {
@@ -313,4 +313,50 @@ section {
 .muted-text {
   color: var(--muted);
   line-height: 1.65;
+}
+
+/* =========================================
+   Responsive Adjustments (Mobile Support)
+========================================= */
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 16px;
+  }
+  .glass-card {
+    padding: 24px !important;
+  }
+  .nav-link {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+  }
+  .hero-section h1 {
+    font-size: clamp(36px, 10vw, 82px) !important;
+  }
+  .contact-card {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+  .contact-buttons {
+    flex-direction: column !important;
+    width: 100%;
+  }
+  .contact-buttons > a {
+    width: 100%;
+  }
+  .experience-header {
+    flex-direction: column !important;
+    gap: 4px !important;
+    align-items: flex-start !important;
+  }
+  .section-header h2 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+  }
 }

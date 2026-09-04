@@ -12,14 +12,13 @@ import CodeBackground from './components/CodeBackground';
 // Scroll reveal hook for sections
 function useScrollReveal() {
   useEffect(() => {
-    // Standard reveal observer
+    // Standard reveal observer - elements stay visible once revealed
     const revealObserver = new IntersectionObserver(
-      (entries) => {
+      (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-          } else {
-            entry.target.classList.remove('is-visible');
+            observer.unobserve(entry.target); // Unobserve to prevent rough fade-outs
           }
         });
       },
@@ -31,32 +30,48 @@ function useScrollReveal() {
       revealObserver.observe(el);
     });
 
-    // Strict focus observer (only triggers when near the middle of the screen)
+    // Polished focus observer with debounce to prevent 'popcorn' effect during fast smooth-scrolls
+    let scrollTimeout;
     const handleScroll = () => {
       const cards = document.querySelectorAll('.glass-card');
-      let closestCard = null;
-      let minDistance = Infinity;
       const centerY = window.innerHeight / 2;
 
+      // Instantly remove focus if a card strays too far from center while scrolling
       cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cardCenterY = rect.top + rect.height / 2;
-        const distance = Math.abs(centerY - cardCenterY);
-
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestCard = card;
+        if (card.classList.contains('active-focus')) {
+          const rect = card.getBoundingClientRect();
+          const cardCenterY = rect.top + rect.height / 2;
+          if (Math.abs(centerY - cardCenterY) > window.innerHeight * 0.4) {
+            card.classList.remove('active-focus');
+          }
         }
       });
 
-      cards.forEach(card => {
-        // Highlight if it's the closest card AND reasonably close to the center
-        if (card === closestCard && minDistance < window.innerHeight * 0.4) {
-          card.classList.add('active-focus');
-        } else {
-          card.classList.remove('active-focus');
-        }
-      });
+      // Wait for scroll to stop before highlighting the new center card
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        let closestCard = null;
+        let minDistance = Infinity;
+
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const cardCenterY = rect.top + rect.height / 2;
+          const distance = Math.abs(centerY - cardCenterY);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestCard = card;
+          }
+        });
+
+        cards.forEach(card => {
+          if (card === closestCard && minDistance < window.innerHeight * 0.4) {
+            card.classList.add('active-focus');
+          } else {
+            card.classList.remove('active-focus');
+          }
+        });
+      }, 150);
     };
 
     window.addEventListener('scroll', handleScroll);

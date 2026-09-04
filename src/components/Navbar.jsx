@@ -11,6 +11,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [activeId, setActiveId] = useState('top');
+  const [hoverId, setHoverId] = useState(null);
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
   const navRef = useRef(null);
   const linkRefs = useRef({});
@@ -40,9 +41,11 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // Update pill position when activeId changes
+  const targetId = hoverId || activeId;
+
+  // Update pill position when targetId changes
   useEffect(() => {
-    const activeLink = linkRefs.current[activeId];
+    const activeLink = linkRefs.current[targetId];
     if (activeLink && navRef.current) {
       const containerRect = navRef.current.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
@@ -53,12 +56,12 @@ export default function Navbar() {
         opacity: 1
       });
     }
-  }, [activeId]);
+  }, [targetId]);
 
   // Recalculate on window resize
   useEffect(() => {
     const handleResize = () => {
-      const activeLink = linkRefs.current[activeId];
+      const activeLink = linkRefs.current[targetId];
       if (activeLink && navRef.current) {
         const containerRect = navRef.current.getBoundingClientRect();
         const linkRect = activeLink.getBoundingClientRect();
@@ -67,8 +70,7 @@ export default function Navbar() {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [activeId]);
-
+  }, [targetId]);
 
   const handleNavClick = (e, id) => {
     e.preventDefault();
@@ -121,25 +123,26 @@ export default function Navbar() {
           />
 
           {navLinks.map((link) => {
-            const isActive = activeId === link.id;
+            const isTarget = targetId === link.id;
             return (
               <a 
                 key={link.id} 
                 href={`#${link.id}`}
+                className="nav-link"
                 ref={el => linkRefs.current[link.id] = el}
                 onClick={(e) => handleNavClick(e, link.id)}
+                onMouseEnter={() => setHoverId(link.id)}
+                onMouseLeave={() => setHoverId(null)}
                 style={{ 
                   position: 'relative',
                   padding: '8px 20px',
                   fontSize: '15px', 
                   fontWeight: 500, 
-                  color: isActive ? '#fff' : '#444', 
+                  color: isTarget ? '#fff' : '#444', 
                   textDecoration: 'none', 
                   transition: 'color 0.35s ease',
                   zIndex: 1
                 }}
-                onMouseOver={(e) => { if (!isActive) e.target.style.color = '#111'; }}
-                onMouseOut={(e) => { if (!isActive) e.target.style.color = '#444'; }}
               >
                 {link.label}
               </a>

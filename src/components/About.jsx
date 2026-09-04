@@ -6,7 +6,7 @@ export default function About() {
         <h2>About me</h2>
       </div>
 
-      <div className="glass-card" style={{ display: 'grid', gap: '64px', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+      <div className="glass-card" style={{ display: 'grid', gap: '64px', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))' }}>
         <div>
           <p className="muted-text" style={{ fontSize: '16px', marginBottom: '16px' }}>
             I enjoy turning ideas into software that solves tangible problems.

@@ -12,8 +12,9 @@ export default function Contact() {
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px', width: '100%' }}>
         
         {/* Contact Details */}
-        <div className="glass-card" style={{ padding: '60px', display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center', textAlign: 'center', width: '70%', maxWidth: '800px', minWidth: '300px' }}>
+        <div className="glass-card contact-card" style={{ padding: '60px', display: 'flex', flexDirection: 'column', gap: '32px', alignItems: 'center', textAlign: 'center', width: '70%', maxWidth: '800px', minWidth: '300px' }}>
           <h3 style={{ margin: 0, fontSize: '24px', fontWeight: 600 }}>Contact Info</h3>
+          
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center', width: '100%' }}>
             <div>
               <div style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>Email</div>
@@ -25,7 +26,7 @@ export default function Contact() {
             </div>
             <div>
               <div style={{ fontSize: '14px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>Socials</div>
-              <div style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}>
+              <div className="contact-buttons" style={{ display: 'flex', gap: '24px', justifyContent: 'center' }}>
                 <a href="https://github.com/likithg2" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: 'var(--ink)', textDecoration: 'underline', textUnderlineOffset: '4px' }}>GitHub</a>
                 <a href="https://www.linkedin.com/in/likithg2/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: 'var(--ink)', textDecoration: 'underline', textUnderlineOffset: '4px' }}>LinkedIn</a>
               </div>

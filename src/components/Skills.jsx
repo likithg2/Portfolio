@@ -33,7 +33,7 @@ export default function Skills() {
         <h2>Technical Arsenal</h2>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px' }}>
         {skills.map((skillGroup, i) => (
           <div key={i} className="glass-card" style={{ padding: '32px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: 500, margin: '0 0 20px 0', color: 'var(--ink)' }}>
