@@ -45,7 +45,7 @@ export default function CodeBackground() {
 
     const draw = () => {
       // Classic Matrix trailing effect: fill canvas with semi-transparent background to fade old characters
-      ctx.fillStyle = 'rgba(238, 242, 238, 0.1)';
+      ctx.fillStyle = 'rgba(224, 244, 224, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `${fontSize}px monospace`;
@@ -117,7 +117,7 @@ export default function CodeBackground() {
         height: '100vh',
         zIndex: -1,
         pointerEvents: 'none',
-        background: '#eef2ee' // Light theme background
+        background: '#e0f4e0' // Light green background
       }}
     />
   );
