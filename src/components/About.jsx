@@ -35,10 +35,32 @@ export default function About() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {[
-            { title: 'Education', desc: 'B.E. in Computer Science Engineering — Bangalore Institute of Technology (2023 - 2027)\nPre-University (PCMB) — Kumarans PU College (2021 - 2023)' },
-            { title: 'Certifications', desc: 'DSA Using Java (NPTEL, 2025), Prompt Engineering (Udemy, 2025)' },
-            { title: 'Achievements', desc: 'Volunteered at National-Level Hackathon "Ambition" (2024)' },
-            { title: 'Leadership', desc: 'Former NCC member — developed leadership, discipline, and teamwork through camps and drills.' }
+            { 
+              title: 'Education', 
+              points: [
+                'B.E. in Computer Science Engineering — Bangalore Institute of Technology (2023 - 2027)',
+                'Pre-University (PCMB) — Kumarans PU College (2021 - 2023)'
+              ] 
+            },
+            { 
+              title: 'Certifications', 
+              points: [
+                'DSA Using Java (NPTEL, 2025)',
+                'Prompt Engineering (Udemy, 2025)'
+              ] 
+            },
+            { 
+              title: 'Achievements', 
+              points: [
+                'Volunteered at National-Level Hackathon "Ambition" (2024)'
+              ] 
+            },
+            { 
+              title: 'Leadership', 
+              points: [
+                'Former NCC member — developed leadership, discipline, and teamwork through camps and drills.'
+              ] 
+            }
           ].map((item, i) => (
             <div key={i} style={{ 
               padding: '24px', 
@@ -48,8 +70,12 @@ export default function About() {
               backdropFilter: 'blur(16px)',
               boxShadow: '0 4px 16px rgba(0,0,0,0.03)'
             }}>
-              <h3 style={{ margin: '0 0 8px 0', fontSize: '16px', fontWeight: 500 }}>{item.title}</h3>
-              <p className="muted-text" style={{ margin: 0, fontSize: '14px', whiteSpace: 'pre-wrap' }}>{item.desc}</p>
+              <h3 style={{ margin: '0 0 12px 0', fontSize: '16px', fontWeight: 500 }}>{item.title}</h3>
+              <ul className="muted-text" style={{ margin: 0, paddingLeft: '20px', fontSize: '14px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {item.points.map((pt, j) => (
+                  <li key={j}>{pt}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
