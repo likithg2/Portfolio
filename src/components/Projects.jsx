@@ -15,7 +15,7 @@ const projects = [
     description: 'NutriVision AI is an AI-powered nutrition and kitchen inventory platform that analyzes food images using Google Gemini Vision to identify nutritional information and track macros. It manages kitchen inventory, generates personalized recipes and smart shopping lists, and provides automated expiry alerts to reduce food waste. The platform features JWT authentication, activity tracking, and responsive dark/light interfaces.',
     tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'Sequelize', 'Google Gemini AI', 'REST API', 'JWT', 'CRON'],
     link: '#',
-    github: 'https://github.com/likithg2/NutriVisionAi'
+    github: 'https://github.com/likithg2/NutriVisionAI'
   },
   {
     title: 'PiConnect',
