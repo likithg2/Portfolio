@@ -144,12 +144,13 @@ export default function Navbar() {
               position: 'absolute',
               top: 0,
               bottom: 0,
-              left: pillStyle.left,
+              left: 0,
               width: pillStyle.width,
               opacity: pillStyle.opacity,
+              transform: `translateX(${pillStyle.left}px)`,
               background: '#111',
               borderRadius: '50px',
-              transition: 'all 0.35s cubic-bezier(0.23, 1, 0.32, 1)',
+              transition: 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), width 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease',
               pointerEvents: 'none'
             }}
           />
