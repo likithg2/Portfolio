@@ -316,54 +316,12 @@ section {
 }
 
 /* =========================================
-   Navbar Visibility: Desktop vs Mobile
-========================================= */
-
-/* Desktop pill nav: visible on ≥769px, hidden on mobile */
-.navbar-desktop {
-  display: flex;
-}
-
-/* Mobile hamburger header + drawer: hidden on desktop */
-.navbar-mobile {
-  display: none;
-}
-
-/* Project card header layout */
-.project-card {
-  padding: 40px;
-}
-
-.project-card-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-}
-
-.project-category-tag {
-  background: #eef2ee;
-  font-size: 12px;
-}
-
-/* =========================================
    Responsive Adjustments (Mobile Support)
 ========================================= */
 
 @media (max-width: 768px) {
-  /* Swap navbar visibility */
-  .navbar-desktop {
-    display: none !important;
-  }
-  .navbar-mobile {
-    display: flex !important;
-  }
-
-  /* Offset sections for mobile header height */
   main {
     padding: 0 16px;
-    padding-top: 72px;
   }
 
   section {
@@ -426,7 +384,11 @@ section {
 @media (max-width: 480px) {
   main {
     padding: 0 14px;
-    padding-top: 72px;
+  }
+
+  .nav-link {
+    padding: 6px 12px !important;
+    font-size: 13px !important;
   }
 
   .badge__tag {
@@ -439,4 +401,8 @@ section {
     font-size: 13px;
     padding: 11px 18px;
   }
+}
+
+.mobile-scrollable-nav::-webkit-scrollbar {
+  display: none;
 }
