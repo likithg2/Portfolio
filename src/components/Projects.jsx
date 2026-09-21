@@ -3,25 +3,25 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 const projects = [
   {
     title: 'AgriShield',
-    category: 'Smart Agriculture Platform',
-    description: 'AgriShield is a full-stack smart agriculture platform designed to reduce post-harvest crop losses through AI-powered quality analysis and supply-chain optimization. It uses a fine-tuned MobileNetV2 model to assess vegetable freshness, shelf life, and financial loss, while providing route optimization and cold-storage recommendations. The platform also includes a Gemini chatbot and English/Kannada voice advisory features.',
-    tags: ['Python', 'FastAPI', 'TensorFlow/Keras', 'MobileNetV2', 'React', 'Vite', 'Tailwind CSS', 'SQLite', 'REST API', 'Gemini', 'OpenWeather API', 'Leaflet.js'],
+    category: 'Smart Agricultural Supply Chain Optimization Platform',
+    description: 'AgriShield is a full-stack smart agriculture platform designed to reduce post-harvest crop losses through AI-powered quality analysis, supply-chain optimization, and intelligent storage recommendations. It uses a fine-tuned MobileNetV2 model to analyze vegetable quality, assess freshness and remaining shelf life, and estimate potential financial loss. The platform also integrates weather-based route optimization, cold-storage recommendations, interactive maps, a Gemini-powered chatbot, and English/Kannada AI voice advisory through a secure FastAPI backend and responsive React dashboard.',
+    tags: ['Python', 'FastAPI', 'TensorFlow/Keras', 'MobileNetV2', 'React', 'Vite', 'Tailwind CSS', 'SQLite', 'REST API', 'Gemini AI', 'OpenWeather API', 'Leaflet.js', 'JWT'],
     link: '#',
     github: 'https://github.com/likithg2/AgriShield'
   },
   {
     title: 'NutriVision AI',
     category: 'AI Nutrition & Kitchen Inventory Platform',
-    description: 'NutriVision AI is an AI-powered nutrition and kitchen inventory platform that analyzes food images using Google Gemini Vision to identify nutritional information and track macros. It manages kitchen inventory, generates personalized recipes and smart shopping lists, and provides automated expiry alerts to reduce food waste. The platform features JWT authentication, activity tracking, and responsive dark/light interfaces.',
-    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'Sequelize', 'Google Gemini AI', 'REST API', 'JWT', 'CRON'],
+    description: 'NutriVision AI is an AI-powered nutrition and kitchen management platform that uses Google Gemini Vision to analyze food images, identify nutritional information, and help users track their daily macros. It manages kitchen inventory, generates personalized recipes from available ingredients, creates smart shopping lists, and provides automated expiry alerts to reduce food waste. The platform includes JWT authentication, activity tracking, CRON-based background jobs, and a responsive interface with smooth animations and dark/light themes.',
+    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express.js', 'Sequelize', 'Google Gemini AI', 'REST API', 'JWT', 'CRON', 'SQL'],
     link: '#',
     github: 'https://github.com/likithg2/NutriVisionAI'
   },
   {
     title: 'PiConnect',
     category: 'Raspberry Pi Remote Control & File Management App',
-    description: 'PiConnect is an Android application designed for wireless Raspberry Pi control and file management, eliminating the need for physical peripherals. It enables bi-directional Wi-Fi file transfer, SSH command execution, live file-system browsing, and Bluetooth HID keyboard functionality. The app also includes built-in PDF, audio, and image viewers for seamless device operation.',
-    tags: ['Kotlin', 'Android SDK', 'XML', 'SSH', 'Bluetooth HID', 'Wi-Fi', 'Network Programming'],
+    description: 'PiConnect is an Android application designed to provide wireless control and file management for Raspberry Pi devices without relying on physical peripherals or USB-based workflows. It supports bi-directional Wi-Fi file transfers, SSH command execution, live file-system browsing, and Bluetooth HID keyboard control. The application also includes built-in PDF, image, and audio viewers, allowing users to interact with and manage Raspberry Pi content directly from an Android device through a unified interface.',
+    tags: ['Kotlin', 'Android SDK', 'XML', 'Android Studio', 'Wi-Fi', 'SSH', 'SFTP', 'Bluetooth HID', 'TCP/IP', 'Network Programming'],
     link: '#',
     github: 'https://github.com/likithg2/PiConnect'
   }
