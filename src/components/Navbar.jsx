@@ -47,39 +47,45 @@ export default function Navbar() {
   useEffect(() => {
     const activeLink = linkRefs.current[targetId];
     if (activeLink && navRef.current) {
-      const containerRect = navRef.current.getBoundingClientRect();
-      const linkRect = activeLink.getBoundingClientRect();
+      // Use offsetLeft and offsetWidth for robust positioning inside the scrollable nav
+      const left = activeLink.offsetLeft;
+      const width = activeLink.offsetWidth;
       
       setPillStyle({
-        left: linkRect.left - containerRect.left + navRef.current.scrollLeft, // adjust for scrollLeft on mobile
-        width: linkRect.width,
+        left,
+        width,
         opacity: 1
       });
-    }
-  }, [targetId, navRef.current?.scrollLeft]); // Also update when scroll position changes if possible, but standard layout handles it well.
 
-  // Recalculate on window resize
+      // Auto-scroll the nav container to keep the active link visible on smaller screens
+      const navContainer = navRef.current;
+      const scrollLeft = navContainer.scrollLeft;
+      const containerWidth = navContainer.offsetWidth;
+      
+      // If the link is outside the visible area of the nav, scroll to center it
+      if (left < scrollLeft || left + width > scrollLeft + containerWidth) {
+        navContainer.scrollTo({
+          left: left - containerWidth / 2 + width / 2,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [targetId]);
+
+  // Recalculate on window resize in case font sizes or padding change
   useEffect(() => {
     const handleResize = () => {
       const activeLink = linkRefs.current[targetId];
-      if (activeLink && navRef.current) {
-        const containerRect = navRef.current.getBoundingClientRect();
-        const linkRect = activeLink.getBoundingClientRect();
-        setPillStyle(prev => ({ ...prev, left: linkRect.left - containerRect.left + navRef.current.scrollLeft, width: linkRect.width }));
+      if (activeLink) {
+        setPillStyle(prev => ({ 
+          ...prev, 
+          left: activeLink.offsetLeft, 
+          width: activeLink.offsetWidth 
+        }));
       }
     };
     window.addEventListener('resize', handleResize);
-    
-    // Also listen to scroll events on the nav itself
-    const navEl = navRef.current;
-    if(navEl) {
-       navEl.addEventListener('scroll', handleResize);
-    }
-
-    return () => {
-        window.removeEventListener('resize', handleResize);
-        if(navEl) navEl.removeEventListener('scroll', handleResize);
-    }
+    return () => window.removeEventListener('resize', handleResize);
   }, [targetId]);
 
   const handleNavClick = (e, id) => {
