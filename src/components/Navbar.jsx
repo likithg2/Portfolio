@@ -91,6 +91,7 @@ export default function Navbar() {
   const handleNavClick = (e, id) => {
     e.preventDefault();
     setActiveId(id);
+    setHoverId(null);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -162,7 +163,11 @@ export default function Navbar() {
                 className="nav-link"
                 ref={el => linkRefs.current[link.id] = el}
                 onClick={(e) => handleNavClick(e, link.id)}
-                onMouseEnter={() => setHoverId(link.id)}
+                onMouseEnter={() => {
+                  if (window.matchMedia('(hover: hover)').matches) {
+                    setHoverId(link.id);
+                  }
+                }}
                 onMouseLeave={() => setHoverId(null)}
                 style={{ 
                   position: 'relative',
