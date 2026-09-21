@@ -9,13 +9,13 @@ export default function About() {
       <div className="glass-card" style={{ display: 'grid', gap: '64px', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))' }}>
         <div>
           <p className="muted-text" style={{ fontSize: '16px', marginBottom: '16px' }}>
-            I’m a Computer Science Engineering student passionate about building practical software and turning ideas into useful digital experiences. My interests span full-stack web development, backend engineering, AI-powered applications, and Android development. I enjoy exploring how different technologies work together to create applications that are functional, scalable, and user-friendly.
+            I enjoy turning ideas into software that solves tangible problems. I’m a Computer Science Engineering student passionate about building practical, user-focused applications across full-stack web development, AI, backend systems, and Android development. I’m particularly interested in creating technology that is both functional and meaningful.
           </p>
           <p className="muted-text" style={{ fontSize: '16px', marginBottom: '16px' }}>
-            I have hands-on experience working with React, Node.js, Express, FastAPI, REST APIs, JWT authentication, SQL/NoSQL databases, and Kotlin for Android development. Through projects such as AgriShield, NutriVision AI, and PiConnect, I’ve worked across the complete development cycle, from designing responsive interfaces and backend APIs to integrating AI models, external services, authentication, databases, and device-level communication.
+            I have hands-on experience with React, Node.js, Express, FastAPI, REST APIs, JWT authentication, SQL/NoSQL databases, and Kotlin. Through projects like AgriShield, NutriVision AI, and PiConnect, I’ve worked across frontend, backend, AI integration, databases, APIs, authentication, and device communication.
           </p>
           <p className="muted-text" style={{ fontSize: '16px', marginBottom: '32px' }}>
-            Beyond coding, I value problem-solving, continuous learning, teamwork, and disciplined execution. My foundation in Data Structures & Algorithms and OOP helps me approach technical challenges systematically, while my experience as an NCC member has strengthened my leadership, responsibility, and ability to work effectively within a team.
+            Beyond development, I enjoy solving technical challenges and continuously learning new technologies. My foundation in Data Structures & Algorithms and OOP helps me approach problems systematically, while my NCC experience has strengthened my leadership, discipline, teamwork, and ability to work effectively under responsibility.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '32px' }}>
@@ -55,7 +55,7 @@ export default function About() {
             {
               title: 'Leadership',
               points: [
-                'Former NCC member — Holder of NCC B & C Certificates,developed leadership, discipline, and teamwork through camps and drills.'
+                'Former NCC member — Holder of NCC B & C Certificates, developed leadership, discipline, and teamwork through camps and drills.'
               ]
             }
           ].map((item, i) => (
