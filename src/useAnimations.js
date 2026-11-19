@@ -133,7 +133,7 @@ export function useParallax() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       parallaxEls.forEach((el) => {
-        const speed = parseFloat(el.dataset.parallax) || 0.1;
+        const speed = Number.parseFloat(el.dataset.parallax) || 0.1;
         const rect = el.getBoundingClientRect();
         const offset = (rect.top + scrollY - window.innerHeight * 0.5) * speed;
         el.style.transform = `translateY(${-offset}px)`;
