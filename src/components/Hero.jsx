@@ -48,10 +48,17 @@ const TypewriterText = ({ text, start, speed = 30, onComplete, showCursor }) => 
 };
 
 export default function Hero() {
-  const [step, setStep] = useState(0); // 0 = Name animating, 1 = H1, 2 = P, 3 = Done
+  const [step, setStep] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [nameVisible, setNameVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const heroRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -73,7 +80,17 @@ export default function Hero() {
     <section 
       id="top" 
       className="hero-section" 
-      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', paddingTop: '100px', paddingBottom: '120px', position: 'relative' }}
+      style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: isMobile ? 'flex-start' : 'center', 
+        alignItems: 'center', 
+        textAlign: 'center', 
+        paddingTop: isMobile ? '90px' : '100px', 
+        paddingBottom: '120px', 
+        position: 'relative' 
+      }}
       ref={heroRef}
     >
 
@@ -87,7 +104,7 @@ export default function Hero() {
           padding: '6px',
           boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
           border: '1px solid rgba(255,255,255,0.4)',
-          marginBottom: '12px',
+          marginBottom: isMobile ? '28px' : '18px',
           opacity: isMounted ? 1 : 0,
           transform: isMounted ? 'translateY(0)' : 'translateY(-20px)',
           transition: 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)',
@@ -112,7 +129,7 @@ export default function Hero() {
           position: 'relative', 
           width: '100%', 
           maxWidth: '800px', 
-          height: '125px', 
+          height: isMobile ? '130px' : '188px', 
           margin: '0 auto 16px auto', 
           display: 'flex', 
           justifyContent: 'center', 
