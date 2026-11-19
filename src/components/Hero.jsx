@@ -60,6 +60,15 @@ export default function Hero() {
     return () => { clearTimeout(nameTimer); clearTimeout(stepTimer); };
   }, []);
 
+  useEffect(() => {
+    if (step === 3) {
+      const scrollTimer = setTimeout(() => {
+        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+      }, 800);
+      return () => clearTimeout(scrollTimer);
+    }
+  }, [step]);
+
   return (
     <section 
       id="top" 
