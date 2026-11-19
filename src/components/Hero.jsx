@@ -48,13 +48,19 @@ const TypewriterText = ({ text, start, speed = 30, onComplete, showCursor }) => 
 };
 
 export default function Hero() {
-  const [step, setStep] = useState(0); // 0 = Name, 1 = H1, 2 = P, 3 = Buttons/Done
+  const [step, setStep] = useState(0); // 0 = Name animating, 1 = H1, 2 = P, 3 = Buttons/Done
   const [isMounted, setIsMounted] = useState(false);
+  const [nameVisible, setNameVisible] = useState(false);
   const heroRef = useRef(null);
 
   useEffect(() => {
     // Trigger mount animations
     setIsMounted(true);
+    // Small delay then pop the name in
+    const nameTimer = setTimeout(() => setNameVisible(true), 200);
+    // After name popup animation completes, start typewriter
+    const stepTimer = setTimeout(() => setStep(1), 900);
+    return () => { clearTimeout(nameTimer); clearTimeout(stepTimer); };
   }, []);
 
   return (
@@ -107,20 +113,17 @@ export default function Hero() {
           alignItems: 'center',
         }}
       >
-        {/* Base Layer: Likith .G */}
+        {/* Base Layer: Likith .G — popup transition */}
         <div style={{ 
           fontFamily: "'Dancing Script', cursive", 
           fontSize: 'clamp(80px, 16vw, 180px)', 
           fontWeight: 700, 
-          color: 'var(--ink)' 
+          color: 'var(--ink)',
+          opacity: nameVisible ? 1 : 0,
+          transform: nameVisible ? 'scale(1) translateY(0)' : 'scale(0.7) translateY(30px)',
+          transition: 'opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
         }}>
-          <TypewriterText 
-            text="Likith .G" 
-            start={step >= 0} 
-            speed={120} 
-            onComplete={() => setStep(1)} 
-            showCursor={step === 0} 
-          />
+          Likith .G
         </div>
       </div>
 
