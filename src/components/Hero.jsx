@@ -1,20 +1,17 @@
 import { useState, useEffect, useRef, Fragment } from 'react';
 
-// Reusable Typewriter that notifies when it's done and conditionally shows the cursor
+// Reusable Typewriter that holds its exact layout dimensions in place to prevent any shifts or movement
 const TypewriterText = ({ text, start, speed = 30, onComplete, showCursor }) => {
-  const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (!start) {
-      setDisplayText('');
       setCurrentIndex(0);
       return;
     }
     
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + text[currentIndex]);
         setCurrentIndex(prev => prev + 1);
       }, speed);
       return () => clearTimeout(timeout);
@@ -23,26 +20,31 @@ const TypewriterText = ({ text, start, speed = 30, onComplete, showCursor }) => 
     }
   }, [currentIndex, start, text, speed, onComplete]);
 
-  const lines = displayText.split('\n');
+  const visiblePart = text.slice(0, currentIndex);
+  const hiddenPart = text.slice(currentIndex);
 
   return (
-    <span>
-      {lines.map((line, i) => (
-        <Fragment key={i}>
-          {line}
-          {i < lines.length - 1 && <br />}
-        </Fragment>
-      ))}
-      <span style={{ 
-        display: 'inline-block', 
-        width: '4px', 
-        height: '1.1em', 
-        backgroundColor: 'var(--ink)', 
-        verticalAlign: 'text-bottom',
-        marginLeft: '4px',
-        opacity: showCursor ? 1 : 0,
-        animation: showCursor && currentIndex === text.length ? 'blink-caret 0.8s step-end infinite' : 'none'
-      }} />
+    <span style={{ whiteSpace: 'pre-wrap', position: 'relative' }}>
+      <span>{visiblePart}</span>
+      {showCursor && (
+        <span style={{ position: 'relative', display: 'inline', userSelect: 'none' }}>
+          <span 
+            style={{
+              position: 'absolute',
+              left: 0,
+              bottom: '0.08em',
+              width: '3px',
+              height: '1.05em',
+              backgroundColor: 'var(--ink)',
+              animation: 'blink-caret 0.8s step-end infinite',
+              pointerEvents: 'none'
+            }} 
+          />
+        </span>
+      )}
+      <span style={{ visibility: 'hidden', userSelect: 'none' }} aria-hidden="true">
+        {hiddenPart}
+      </span>
     </span>
   );
 };
