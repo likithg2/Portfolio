@@ -12,7 +12,7 @@ export default function Experience() {
         <div style={{ position: 'relative' }}>
           <div className="experience-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
             <div>
-              <h3 style={{ fontSize: '20px', margin: '0 0 8px 0', fontWeight: 600 }}>Android Application Development Intern</h3>
+              <h3 style={{ fontSize: '20px', margin: '0 0 8px 0', fontWeight: 600 }}>Project Intern</h3>
               <div style={{ fontSize: '15px', color: 'var(--ink)', fontWeight: 500 }}>InnovationHub Technologies Pvt. Ltd. • Bengaluru</div>
             </div>
             <div className="badge__tag" style={{ background: '#eef2ee', fontSize: '13px', color: 'var(--muted)' }}>
@@ -21,8 +21,9 @@ export default function Experience() {
           </div>
           
           <ul className="muted-text" style={{ margin: 0, paddingLeft: '20px', fontSize: '15px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <li>Developed PiConnect, a wireless Android app interfacing with a Raspberry Pi scanning device via Wi-Fi, SSH, and Bluetooth, replacing manual USB-based workflows.</li>
-            <li>Gained production-level experience with Ubuntu OS, Android Studio, and network protocol integration (SSH, TCP/IP, Bluetooth HID) through end-to-end feature development and on-site testing.</li>
+            <li>Worked on PiConnect, a Kotlin-based Android application with 13 Activities and 15 XML layouts, implementing Raspberry Pi connectivity through SSH/SFTP, remote command execution and automatic reconnection.</li>
+            <li>Implemented bidirectional file transfer and remote file management through 6 core operations, real-time progress tracking and 2 device-discovery methods; assisted in integrating Bluetooth RFCOMM keyboard control with 10 buttons supporting 20 character inputs.</li>
+            <li>Worked on securing connection credentials using AES-256 encryption and integrating 4 file-viewing modules supporting 16 file formats, including image, audio, PDF and text/document files.</li>
           </ul>
         </div>
 

@@ -1,27 +1,19 @@
 const skills = [
   {
-    category: "Languages",
-    items: ["Java", "Python", "JavaScript", "C", "Kotlin (Partial)"]
+    category: "Programming Languages",
+    items: ["C", "Python", "Java", "JavaScript", "SQL"]
   },
   {
-    category: "Backend & APIs",
-    items: ["Node.js", "Express.js", "FastAPI", "REST APIs"]
-  },
-  {
-    category: "Frontend",
-    items: ["HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "Responsive Design"]
-  },
-  {
-    category: "Android Development",
-    items: ["Kotlin", "XML", "Android Studio"]
+    category: "Web Technologies",
+    items: ["HTML", "CSS", "React.js", "Redux", "Node.js", "Express.js", "EJS", "TailwindCSS", "Bootstrap", "FastAPI"]
   },
   {
     category: "Databases",
-    items: ["MySQL", "MongoDB", "SQL", "NoSQL"]
+    items: ["MySQL", "MongoDB", "SQLAlchemy", "Sequelize"]
   },
   {
     category: "Tools & Platforms",
-    items: ["Git", "GitHub", "Ubuntu/Linux CLI", "SSH", "VS Code", "Agile/Scrum"]
+    items: ["Git", "GitHub", "Postman", "Android Studio", "Ubuntu/Linux CLI", "Hoppscotch", "REST APIs", "SSH", "SFTP"]
   }
 ];
 

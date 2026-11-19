@@ -3,27 +3,27 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 const projects = [
   {
     title: 'AgriShield',
-    category: 'Smart Agricultural Supply Chain Optimization Platform',
-    description: 'AgriShield is a full-stack smart agriculture platform designed to reduce post-harvest crop losses through AI-powered quality analysis, supply-chain optimization, and intelligent storage recommendations. It uses a fine-tuned MobileNetV2 model to analyze vegetable quality, assess freshness and remaining shelf life, and estimate potential financial loss. The platform also integrates weather-based route optimization, cold-storage recommendations, interactive maps, a Gemini-powered chatbot, and English/Kannada AI voice advisory through a secure FastAPI backend and responsive React dashboard.',
-    tags: ['Python', 'FastAPI', 'TensorFlow/Keras', 'MobileNetV2', 'React', 'Vite', 'Tailwind CSS', 'SQLite', 'REST API', 'Gemini AI', 'OpenWeather API', 'Leaflet.js', 'JWT'],
+    subtitle: 'Agricultural Spoilage Prediction and Logistic Support',
+    bullets: [
+      'Trained a MobileNetV2 model on 4,680 images across 8 fresh and rotten vegetable classes, achieving 95.94% evaluation accuracy and 95.88% macro F1-score.',
+      'Developed spoilage-risk models using XGBoost, Random Forest and Gradient Boosting, achieving 96% macro F1 and 97% weighted F1; implemented shelf-life and post-harvest loss prediction with 0.63-day MAE and 8.24% MAE, respectively.',
+      'Built a FastAPI backend with 41 route definitions across 7 routers and 7 SQLAlchemy entities, supporting authentication, predictions, shipment tracking, warehouse management and analytics; integrated OpenWeatherMap and Gemini APIs for weather insights and geospatial cold-storage recommendations.'
+    ],
+    tags: ['Python', 'TensorFlow/Keras', 'MobileNetV2', 'XGBoost', 'Random Forest', 'Gradient Boosting', 'FastAPI', 'SQLAlchemy', 'React.js', 'JavaScript'],
     link: '#',
     github: 'https://github.com/likithg2/AgriShield'
   },
   {
     title: 'NutriVision AI',
-    category: 'AI Nutrition & Kitchen Inventory Platform',
-    description: 'NutriVision AI is an AI-powered nutrition and kitchen management platform that uses Google Gemini Vision to analyze food images, identify nutritional information, and help users track their daily macros. It manages kitchen inventory, generates personalized recipes from available ingredients, creates smart shopping lists, and provides automated expiry alerts to reduce food waste. The platform includes JWT authentication, activity tracking, CRON-based background jobs, and a responsive interface with smooth animations and dark/light themes.',
-    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express.js', 'Sequelize', 'Google Gemini AI', 'REST API', 'JWT', 'CRON', 'SQL'],
+    subtitle: 'Nutrition & Inventory Management',
+    bullets: [
+      'Developed 2 AI-powered food image-analysis workflows using Gemini Vision with configurable NVIDIA Nemotron and OpenAI integrations to estimate calories, macronutrients and up to 29 nutritional indicators.',
+      'Built a Node.js/Express backend with 74 route handlers across 14 routers, 9 controllers and 5 Sequelize models, supporting authentication, meal logging, inventory and notifications; integrated USDA FoodData Central APIs into a React application with 10 pages and 17 component files.',
+      'Automated daily inventory-expiry checks with a 3-day alert window, integrating email, push and in-app notifications; added nutrition analytics and AI-assisted recipe recommendations.'
+    ],
+    tags: ['JavaScript', 'React.js', 'Node.js', 'Express.js', 'Sequelize', 'Gemini Vision', 'NVIDIA Nemotron', 'OpenAI API'],
     link: '#',
     github: 'https://github.com/likithg2/NutriVisionAI'
-  },
-  {
-    title: 'PiConnect',
-    category: 'Raspberry Pi Remote Control & File Management App',
-    description: 'PiConnect is an Android application designed to provide wireless control and file management for Raspberry Pi devices without relying on physical peripherals or USB-based workflows. It supports bi-directional Wi-Fi file transfers, SSH command execution, live file-system browsing, and Bluetooth HID keyboard control. The application also includes built-in PDF, image, and audio viewers, allowing users to interact with and manage Raspberry Pi content directly from an Android device through a unified interface.',
-    tags: ['Kotlin', 'Android SDK', 'XML', 'Android Studio', 'Wi-Fi', 'SSH', 'SFTP', 'Bluetooth HID', 'TCP/IP', 'Network Programming'],
-    link: '#',
-    github: 'https://github.com/likithg2/PiConnect'
   }
 ];
 
@@ -45,11 +45,15 @@ export default function Projects() {
             <div>
               <div className="project-card-header">
                 <h3 style={{ fontSize: 'clamp(18px, 4vw, 24px)', margin: 0 }}>{project.title}</h3>
-                <span className="badge__tag project-category-tag">{project.category}</span>
+                <span className="badge__tag project-category-tag">{project.subtitle}</span>
               </div>
             </div>
 
-            <p className="muted-text" style={{ fontSize: '15px', margin: 0 }}>{project.description}</p>
+            <ul className="muted-text" style={{ margin: 0, paddingLeft: '20px', fontSize: '15px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {project.bullets.map((point, j) => (
+                <li key={j}>{point}</li>
+              ))}
+            </ul>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {project.tags.map(tag => (
@@ -72,11 +76,9 @@ export default function Projects() {
               <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-outline">
                 <FiGithub style={{ marginRight: '8px' }} /> View Code
               </a>
-              {project.link !== '#' && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn-outline">
-                  <FiExternalLink style={{ marginRight: '8px' }} /> Live Demo
-                </a>
-              )}
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn-outline">
+                <FiExternalLink style={{ marginRight: '8px' }} /> Live Demo
+              </a>
             </div>
 
           </div>
