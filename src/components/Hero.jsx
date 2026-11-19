@@ -48,18 +48,15 @@ const TypewriterText = ({ text, start, speed = 30, onComplete, showCursor }) => 
 };
 
 export default function Hero() {
-  const [step, setStep] = useState(0); // 0 = Name animating, 1 = H1, 2 = P, 3 = Buttons/Done
+  const [step, setStep] = useState(0); // 0 = Name animating, 1 = H1, 2 = P, 3 = Done
   const [isMounted, setIsMounted] = useState(false);
   const [nameVisible, setNameVisible] = useState(false);
   const heroRef = useRef(null);
 
   useEffect(() => {
-    // Trigger mount animations
     setIsMounted(true);
-    // Small delay then pop the name in
-    const nameTimer = setTimeout(() => setNameVisible(true), 200);
-    // After name popup animation completes, start typewriter
-    const stepTimer = setTimeout(() => setStep(1), 900);
+    const nameTimer = setTimeout(() => setNameVisible(true), 150);
+    const stepTimer = setTimeout(() => setStep(1), 950);
     return () => { clearTimeout(nameTimer); clearTimeout(stepTimer); };
   }, []);
 
