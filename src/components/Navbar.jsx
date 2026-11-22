@@ -20,17 +20,15 @@ export default function Navbar() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        // Find all intersecting entries
         const visibleEntries = entries.filter(entry => entry.isIntersecting);
         if (visibleEntries.length > 0) {
-          // Sort by bounding client rect to find the one closest to the top
           visibleEntries.sort((a, b) => {
             return Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top);
           });
           setActiveId(visibleEntries[0].target.id);
         }
       },
-      { rootMargin: '-20% 0px -79% 0px', threshold: 0 } // Trigger when section passes upper top
+      { rootMargin: '-20% 0px -79% 0px', threshold: 0 }
     );
 
     navLinks.forEach(link => {
@@ -45,43 +43,50 @@ export default function Navbar() {
 
   // Update pill position when targetId changes
   useEffect(() => {
-    const activeLink = linkRefs.current[targetId];
-    if (activeLink && navRef.current) {
-      // Use offsetLeft and offsetWidth for robust positioning inside the scrollable nav
-      const left = activeLink.offsetLeft;
-      const width = activeLink.offsetWidth;
-      
-      setPillStyle({
-        left,
-        width,
-        opacity: 1
-      });
+    const updatePill = () => {
+      const activeLink = linkRefs.current[targetId];
+      if (activeLink && navRef.current) {
+        const left = activeLink.offsetLeft;
+        const width = activeLink.offsetWidth;
 
-      // Auto-scroll the nav container to keep the active link visible on smaller screens
-      const navContainer = navRef.current;
-      const scrollLeft = navContainer.scrollLeft;
-      const containerWidth = navContainer.offsetWidth;
-      
-      // If the link is outside the visible area of the nav, scroll to center it
-      if (left < scrollLeft || left + width > scrollLeft + containerWidth) {
-        navContainer.scrollTo({
-          left: left - containerWidth / 2 + width / 2,
-          behavior: 'smooth'
+        setPillStyle({
+          left,
+          width,
+          opacity: 1
         });
+
+        // Auto-scroll the nav container to keep the active link visible on smaller screens
+        const navContainer = navRef.current;
+        const scrollLeft = navContainer.scrollLeft;
+        const containerWidth = navContainer.offsetWidth;
+
+        if (left < scrollLeft || left + width > scrollLeft + containerWidth) {
+          navContainer.scrollTo({
+            left: Math.max(0, left - containerWidth / 2 + width / 2),
+            behavior: 'smooth'
+          });
+        }
       }
+    };
+
+    updatePill();
+
+    // Recalculate once web fonts finish loading to ensure pixel-perfect width
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(updatePill);
     }
   }, [targetId]);
 
-  // Recalculate on window resize in case font sizes or padding change
+  // Recalculate on window resize / orientation change
   useEffect(() => {
     const handleResize = () => {
       const activeLink = linkRefs.current[targetId];
       if (activeLink) {
-        setPillStyle(prev => ({ 
-          ...prev, 
-          left: activeLink.offsetLeft, 
-          width: activeLink.offsetWidth 
-        }));
+        setPillStyle({
+          left: activeLink.offsetLeft,
+          width: activeLink.offsetWidth,
+          opacity: 1
+        });
       }
     };
     window.addEventListener('resize', handleResize);
@@ -96,47 +101,9 @@ export default function Navbar() {
   };
 
   return (
-    <header 
-      style={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        width: '100%', 
-        zIndex: 70, 
-        padding: '24px', 
-        display: 'flex', 
-        justifyContent: 'center',
-      }}
-    >
-      <div 
-        className="rise"
-        style={{ 
-          '--i': 1,
-          background: 'rgba(238, 242, 238, 0.35)', /* Highly translucent glass */
-          backdropFilter: 'blur(24px)',
-          borderRadius: '50px',
-          padding: '8px',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-          border: '1px solid rgba(255,255,255,0.5)',
-          position: 'relative',
-          maxWidth: '100%',
-        }}
-      >
-        <nav 
-          ref={navRef} 
-          className="mobile-scrollable-nav"
-          style={{ 
-            display: 'flex', 
-            position: 'relative', 
-            listStyle: 'none', 
-            margin: 0, 
-            padding: 0,
-            overflowX: 'auto',
-            scrollbarWidth: 'none', /* Firefox */
-            msOverflowStyle: 'none',  /* IE and Edge */
-            whiteSpace: 'nowrap'
-          }}
-        >
+    <header className="navbar-header">
+      <div className="navbar-pill-container rise" style={{ '--i': 1 }}>
+        <nav ref={navRef} className="mobile-scrollable-nav">
           
           {/* Animated Background Pill */}
           <div 
@@ -150,7 +117,7 @@ export default function Navbar() {
               transform: `translateX(${pillStyle.left}px)`,
               background: '#111',
               borderRadius: '50px',
-              transition: 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), width 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease',
+              transition: 'transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), width 0.35s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease',
               pointerEvents: 'none'
             }}
           />
@@ -171,15 +138,7 @@ export default function Navbar() {
                 }}
                 onMouseLeave={() => setHoverId(null)}
                 style={{ 
-                  position: 'relative',
-                  padding: '8px 20px',
-                  fontSize: '15px', 
-                  fontWeight: 500, 
                   color: isTarget ? '#fff' : '#444', 
-                  textDecoration: 'none', 
-                  transition: 'color 0.35s ease',
-                  zIndex: 1,
-                  display: 'inline-block'
                 }}
               >
                 {link.label}

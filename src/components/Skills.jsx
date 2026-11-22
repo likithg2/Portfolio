@@ -25,24 +25,33 @@ export default function Skills() {
         <h2>Technical Arsenal</h2>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '24px' }}>
+      <div 
+        className="skills-grid"
+        style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))', 
+          gap: '24px' 
+        }}
+      >
         {skills.map((skillGroup, i) => (
-          <div key={i} className="glass-card" style={{ padding: '32px' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 500, margin: '0 0 20px 0', color: 'var(--ink)' }}>
+          <div key={i} className="glass-card" style={{ padding: '30px' }}>
+            <h3 style={{ fontSize: '17px', fontWeight: 600, margin: '0 0 16px 0', color: 'var(--ink)' }}>
               {skillGroup.category}
             </h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
               {skillGroup.items.map(item => (
                 <span 
                   key={item} 
                   style={{ 
                     background: 'rgba(0, 0, 0, 0.04)', 
-                    border: '1px solid rgba(0, 0, 0, 0.05)', 
+                    border: '1px solid rgba(0, 0, 0, 0.06)', 
                     backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
                     borderRadius: '8px', 
-                    padding: '8px 14px', 
-                    fontSize: '14px', 
-                    color: 'var(--ink)' 
+                    padding: '6px 12px', 
+                    fontSize: '13px', 
+                    color: 'var(--ink)',
+                    display: 'inline-block'
                   }}
                 >
                   {item}

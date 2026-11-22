@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Fragment } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // Reusable Typewriter that holds its exact layout dimensions in place to prevent any shifts or movement
 const TypewriterText = ({ text, start, speed = 30, onComplete, showCursor }) => {
@@ -53,14 +53,7 @@ export default function Hero() {
   const [step, setStep] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [nameVisible, setNameVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
   const heroRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -86,11 +79,9 @@ export default function Hero() {
         minHeight: '100vh', 
         display: 'flex', 
         flexDirection: 'column', 
-        justifyContent: isMobile ? 'flex-start' : 'center', 
+        justifyContent: 'center', 
         alignItems: 'center', 
         textAlign: 'center', 
-        paddingTop: isMobile ? '90px' : '100px', 
-        paddingBottom: '120px', 
         position: 'relative' 
       }}
       ref={heroRef}
@@ -98,40 +89,41 @@ export default function Hero() {
 
       {/* Software Developer Badge */}
       <div 
+        className="hero-badge-box"
         style={{
           background: 'rgba(255, 255, 255, 0.15)',
           backdropFilter: 'blur(24px)',
           WebkitBackdropFilter: 'blur(24px)',
           borderRadius: '50px',
-          padding: '6px',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+          padding: '5px',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
           border: '1px solid rgba(255,255,255,0.4)',
-          marginBottom: isMobile ? '28px' : '18px',
+          marginBottom: '18px',
           opacity: isMounted ? 1 : 0,
           transform: isMounted ? 'translateY(0)' : 'translateY(-20px)',
           transition: 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)',
         }}
       >
-        {/* Inner Concentrated Glass Highlight */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.5)', 
+          background: 'rgba(255, 255, 255, 0.55)', 
           borderRadius: '50px',
-          padding: '6px 24px',
+          padding: '6px 20px',
           display: 'flex',
           alignItems: 'center',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.05), inset 0 1px 2px rgba(255,255,255,0.9)'
+          boxShadow: '0 2px 8px rgba(0,0,0,0.04), inset 0 1px 2px rgba(255,255,255,0.9)'
         }}>
-          <span style={{ fontSize: '15px', fontWeight: 600, color: 'var(--ink)' }}>Software Developer</span>
+          <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--ink)' }}>Software Developer</span>
         </div>
       </div>
 
       {/* Interactive Title Area */}
       <div 
+        className="hero-title-area"
         style={{ 
           position: 'relative', 
           width: '100%', 
           maxWidth: '800px', 
-          height: isMobile ? '130px' : '188px', 
+          height: '175px', 
           margin: '0 auto 16px auto', 
           display: 'flex', 
           justifyContent: 'center', 
@@ -139,22 +131,36 @@ export default function Hero() {
         }}
       >
         {/* Base Layer: Likith .G — popup transition */}
-        <div style={{ 
-          fontFamily: "'Dancing Script', cursive", 
-          fontSize: 'clamp(80px, 16vw, 180px)', 
-          fontWeight: 700, 
-          color: 'var(--ink)',
-          opacity: nameVisible ? 1 : 0,
-          transform: nameVisible ? 'scale(1) translateY(0)' : 'scale(0.7) translateY(30px)',
-          transition: 'opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
-        }}>
+        <div 
+          className="hero-title-text"
+          style={{ 
+            fontFamily: "'Dancing Script', cursive", 
+            fontSize: 'clamp(64px, 14vw, 160px)', 
+            fontWeight: 700, 
+            color: 'var(--ink)',
+            lineHeight: 1,
+            opacity: nameVisible ? 1 : 0,
+            transform: nameVisible ? 'scale(1) translateY(0)' : 'scale(0.7) translateY(30px)',
+            transition: 'opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          }}
+        >
           Likith .G
         </div>
       </div>
 
       {/* Intro Text Container */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h1 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.2, margin: '0 0 24px 0', color: 'var(--ink)' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+        <h1 
+          className="hero-heading"
+          style={{ 
+            fontSize: 'clamp(26px, 5vw, 50px)', 
+            fontWeight: 500, 
+            letterSpacing: '-0.03em', 
+            lineHeight: 1.25, 
+            margin: '0 0 20px 0', 
+            color: 'var(--ink)' 
+          }}
+        >
           <TypewriterText 
             text={'Engineering ideas into software\nthat works.'} 
             start={step >= 1} 
@@ -164,7 +170,14 @@ export default function Hero() {
           />
         </h1>
 
-        <p className="muted-text" style={{ fontSize: 'clamp(16px, 2vw, 20px)', maxWidth: '65ch', margin: '0 auto 40px auto' }}>
+        <p 
+          className="muted-text hero-description" 
+          style={{ 
+            fontSize: 'clamp(15px, 2vw, 19px)', 
+            maxWidth: '65ch', 
+            margin: '0 auto 36px auto' 
+          }}
+        >
           <TypewriterText 
             text={'Computer Science Engineering student building practical software across APIs, mobile applications, web applications, machine learning, and databases.'} 
             start={step >= 2} 
@@ -175,11 +188,23 @@ export default function Hero() {
         </p>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', opacity: step === 3 ? 1 : 0, transition: 'opacity 0.8s ease', pointerEvents: step === 3 ? 'auto' : 'none' }}>
+        <div 
+          className="hero-actions"
+          style={{ 
+            display: 'flex', 
+            gap: '16px', 
+            justifyContent: 'center', 
+            flexWrap: 'wrap', 
+            width: '100%',
+            opacity: step === 3 ? 1 : 0, 
+            transition: 'opacity 0.8s ease', 
+            pointerEvents: step === 3 ? 'auto' : 'none' 
+          }}
+        >
           <a href="#projects" className="btn-dark" onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}>
             View Projects
           </a>
-          <a href="#contact" className="btn-outline" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }} style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}>
+          <a href="#contact" className="btn-outline" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
             Get in Touch
           </a>
         </div>
@@ -189,19 +214,20 @@ export default function Hero() {
       <div 
         style={{ 
           position: 'absolute', 
-          bottom: '40px', 
+          bottom: '30px', 
           left: '50%', 
           transform: 'translateX(-50%)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '8px',
-          opacity: step === 3 ? 0.5 : 0,
-          transition: 'opacity 1s ease'
+          gap: '6px',
+          opacity: step === 3 ? 0.45 : 0,
+          transition: 'opacity 1s ease',
+          pointerEvents: 'none'
         }}
       >
-        <div style={{ fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink)' }}>Scroll</div>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--ink)' }}>Scroll</div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </div>
