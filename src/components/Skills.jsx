@@ -5,11 +5,11 @@ const skills = [
   },
   {
     category: "Web Technologies",
-    items: ["HTML", "CSS", "React.js", "Redux", "Node.js", "Express.js", "EJS", "TailwindCSS", "Bootstrap", "FastAPI"]
+    items: ["HTML", "CSS", "React.js", "Node.js", "Express.js", "EJS", "TailwindCSS", "Bootstrap"]
   },
   {
     category: "Databases",
-    items: ["MySQL", "MongoDB", "SQLAlchemy", "Sequelize"]
+    items: ["MySQL", "MongoDB"]
   },
   {
     category: "Tools & Platforms",
