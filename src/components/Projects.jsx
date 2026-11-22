@@ -10,7 +10,7 @@ const projects = [
       'Built a FastAPI backend with 41 route definitions across 7 routers and 7 SQLAlchemy entities, supporting authentication, predictions, shipment tracking, warehouse management and analytics; integrated OpenWeatherMap and Gemini APIs for weather insights and geospatial cold-storage recommendations.'
     ],
     tags: ['Python', 'TensorFlow/Keras', 'MobileNetV2', 'XGBoost', 'Random Forest', 'Gradient Boosting', 'FastAPI', 'SQLAlchemy', 'React.js', 'JavaScript'],
-    link: '#',
+    link: 'https://agrishield-app.vercel.app/',
     github: 'https://github.com/likithg2/AgriShield'
   },
   {
@@ -22,7 +22,7 @@ const projects = [
       'Automated daily inventory-expiry checks with a 3-day alert window, integrating email, push and in-app notifications; added nutrition analytics and AI-assisted recipe recommendations.'
     ],
     tags: ['JavaScript', 'React.js', 'Node.js', 'Express.js', 'Sequelize', 'Gemini Vision', 'NVIDIA Nemotron', 'OpenAI API'],
-    link: '#',
+    link: 'https://nutrivision-ai-app.vercel.app/',
     github: 'https://github.com/likithg2/NutriVisionAI'
   }
 ];
