@@ -6,7 +6,7 @@ const projects = [
     subtitle: 'Agricultural Spoilage Prediction and Logistic Support',
     bullets: [
       'Trained a MobileNetV2 model on 4,680 images across 8 fresh and rotten vegetable classes, achieving 95.94% evaluation accuracy and 95.88% macro F1-score.',
-      'Developed spoilage-risk models using XGBoost, Random Forest and Gradient Boosting, achieving 96% macro F1 and 97% weighted F1; implemented shelf-life and post-harvest loss prediction with 0.63-day MAE and 8.24% MAE, respectively.',
+      'Applied XGBoost, Random Forest and Gradient Boosting for spoilage-risk classification, achieving 96% macro F1 and 97% weighted F1; designed shelf-life and post-harvest loss prediction models with 0.63-day MAE and 8.24% MAE, respectively.',
       'Built a FastAPI backend with 41 route definitions across 7 routers and 7 SQLAlchemy entities, supporting authentication, predictions, shipment tracking, warehouse management and analytics; integrated OpenWeatherMap and Gemini APIs for weather insights and geospatial cold-storage recommendations.'
     ],
     tags: ['Python', 'TensorFlow/Keras', 'MobileNetV2', 'XGBoost', 'Random Forest', 'Gradient Boosting', 'FastAPI', 'SQLAlchemy', 'React.js', 'JavaScript'],
@@ -17,11 +17,11 @@ const projects = [
     title: 'NutriVision AI',
     subtitle: 'Nutrition & Inventory Management',
     bullets: [
-      'Developed 2 AI-powered food image-analysis workflows using Gemini Vision with configurable NVIDIA Nemotron and OpenAI integrations to estimate calories, macronutrients and up to 29 nutritional indicators.',
-      'Built a Node.js/Express backend with 74 route handlers across 14 routers, 9 controllers and 5 Sequelize models, supporting authentication, meal logging, inventory and notifications; integrated USDA FoodData Central APIs into a React application with 10 pages and 17 component files.',
-      'Automated daily inventory-expiry checks with a 3-day alert window, integrating email, push and in-app notifications; added nutrition analytics and AI-assisted recipe recommendations.'
+      'Integrated 2 AI-powered food image-analysis workflows using Gemini Vision with configurable NVIDIA Nemotron and OpenAI integrations to estimate calories, macronutrients and up to 29 nutritional indicators.',
+      'Engineered a Node.js/Express backend with 74 route handlers across 14 routers, 9 controllers and 5 Sequelize models, supporting authentication, meal logging, inventory and notifications; connected USDA FoodData Central APIs to a React application with 10 pages and 17 component files.',
+      'Automated daily inventory-expiry checks with a 3-day alert window, incorporating email, push and in-app notifications; added nutrition analytics and AI-assisted recipe recommendations.'
     ],
-    tags: ['JavaScript', 'React.js', 'Node.js', 'Express.js', 'Sequelize', 'Gemini Vision', 'NVIDIA Nemotron', 'OpenAI API'],
+    tags: ['JavaScript', 'React.js', 'Node.js', 'Express.js', 'Sequelize', 'Gemini Vision', 'NVIDIA Nemotron', 'OpenAI API', 'USDA FoodData Central'],
     link: 'https://nutrivision-ai-app.vercel.app/',
     github: 'https://github.com/likithg2/NutriVisionAI'
   }

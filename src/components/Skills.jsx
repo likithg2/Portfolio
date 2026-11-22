@@ -5,7 +5,7 @@ const skills = [
   },
   {
     category: "Web Technologies",
-    items: ["HTML", "CSS", "React.js", "Node.js", "Express.js", "EJS", "TailwindCSS", "Bootstrap"]
+    items: ["HTML", "CSS", "React.js", "Node.js", "Express.js", "EJS", "Tailwind CSS", "Bootstrap"]
   },
   {
     category: "Databases",
@@ -13,7 +13,7 @@ const skills = [
   },
   {
     category: "Tools & Platforms",
-    items: ["Git", "GitHub", "Postman", "Android Studio", "Ubuntu/Linux CLI", "Hoppscotch", "REST APIs", "SSH", "SFTP"]
+    items: ["Git", "GitHub", "Postman", "Android Studio", "Ubuntu/Linux CLI", "Hoppscotch", "REST APIs", "SSH", "SFTP", "Google Antigravity", "OpenAI Codex", "Vercel"]
   }
 ];
 
