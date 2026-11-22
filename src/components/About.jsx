@@ -9,10 +9,10 @@ export default function About() {
       <div className="glass-card about-grid" style={{ display: 'grid', gap: '48px', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))' }}>
         <div>
           <p className="muted-text" style={{ fontSize: '15.5px', marginBottom: '16px' }}>
-            Computer Science undergraduate with experience developing AI/ML applications, full-stack web platforms and Android applications. Skilled in Python, C, Java, JavaScript and SQL, with practical experience using React, Node.js, Express and FastAPI.
+            Computer Science undergraduate with strong hands-on experience in full-stack web development and practical exposure to Android application development and AI/ML applications.
           </p>
           <p className="muted-text" style={{ fontSize: '15.5px', marginBottom: '16px' }}>
-            Experienced in developing REST APIs, integrating databases and external services, and implementing machine learning models for image classification and prediction.
+            Skilled in Python, C, Java, JavaScript and SQL, with experience building responsive web applications, developing REST APIs, integrating databases and external services, and implementing machine learning models for image classification and prediction.
           </p>
           <p className="muted-text" style={{ fontSize: '15.5px', marginBottom: '28px' }}>
             Knowledge of Data Structures and Algorithms, DBMS, Operating Systems and Computer Networks.
